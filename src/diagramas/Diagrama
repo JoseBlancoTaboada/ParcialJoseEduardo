@@ -1,0 +1,94 @@
+
+\\Diagrama de clases
+@startuml
+
+ @startuml
+
+class Cliente {
+    - nombre: String
+    - nif: String
+    - telefono: String
+    - email: String
+    - direccion: String
+    - castingsContratados: List<Casting>
+    + contratarCasting(c: Casting)
+    + getCastingsContratados(): List<Casting>
+}
+
+class Casting {
+    - codigo: String
+    - nombre: String
+    - descripcion: String
+    - fecha: String
+    - esPresencial: boolean
+    - costo: double
+    - candidatos: List<Candidato>
+    - agente: AgenteDeCasting
+    + agregarCandidato(c: Candidato)
+}
+
+class AgenteDeCasting {
+    - numeroEmpleado: String
+    - dni: String
+    - nombre: String
+    - direccion: String
+    - castingsSupervisados: List<Casting>
+    + asignarCasting(c: Casting)
+    + getCastingsSupervisados(): List<Casting>
+}
+
+abstract class Candidato {
+    - nombre: String
+    - edad: int
+    - genero: String
+    - nacionalidad: String
+    - telefono: String
+    - email: String
+    - colorOjos: String
+    - colorPelo: String
+    - fechaNacimiento: String
+    - fotografia: String
+    - portafolio: List<String>
+    - representante: Representante
+    + agregarTrabajo(enlace: String)
+    + mostrarDetalles()
+}
+
+class CandidatoNiño {
+    - nombreTutor: String
+}
+
+class Modelo {
+    - altura: double
+    - peso: double
+}
+
+class Actor {
+    - añosExperiencia: int
+    - especialidad: String
+}
+
+class Representante {
+    - nombre: String
+    - telefono: String
+    - email: String
+}
+
+class PruebaIndividual {
+    - candidato: Candidato
+    - evaluacion: String
+    - puntuacion: int
+    + mostrarResultado()
+}
+
+Cliente "1" --> "N" Casting : contrata
+Casting "1" --> "N" Candidato : selecciona
+Casting "1" --> "1" AgenteDeCasting : supervisado por
+Candidato <|-- Modelo
+Candidato <|-- Actor
+Candidato <|-- CandidatoNiño
+CandidatoNiño "1" --> "1" Representante : representado por
+Candidato "1" --> "1" Representante : puede tener
+PruebaIndividual "1" --> "1" Candidato : evalúa
+
+@enduml
