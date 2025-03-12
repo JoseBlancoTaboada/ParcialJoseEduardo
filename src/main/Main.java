@@ -12,9 +12,11 @@ import candidatos.Modelo;
 import castings.Casting;
 import clientes.Cliente;
 import java.util.List;
+import pruebasindividuales.PruebaIndividual;
 import representantes.Representante;
 
 public class Main {
+
     public static void main(String[] args) {
         // CREACION DE CLIENTES
         Cliente cliente1 = new Cliente("Gucchi", "12345678", "123456789", "gucchi@gmail.com", "Calle 456");
@@ -37,30 +39,29 @@ public class Main {
         Representante representante2 = new Representante("Sebas Torrez", "9848755577", "sebas@gmail.com");
 
         // CREACION DE CANDIDATOS
-        
         Modelo modelo1 = new Modelo("Ana Lopez", 22, "Femenino", "Colombiana", "320321987",
-                                    "ana@gmail.com", "Marrones", "Castaño", "2002-04-15",
-                                    "foto1.jpg", null, 1.75, 55);
+                "ana@gmail.com", "Marrones", "Castaño", "2002-04-15",
+                "foto1.jpg", null, 1.75, 55);
 
         // Con representante
         Modelo modelo2 = new Modelo("Carlos Torres", 13, "Masculino", "Venezolano", "456654321",
-                                    "carlos@gmail.com", "Grises", "Rubio", "2011-08-22",
-                                    "foto2.jpg", representante1, 1.85, 78);
+                "carlos@gmail.com", "Grises", "Rubio", "2011-08-22",
+                "foto2.jpg", representante1, 1.85, 78);
 
         // Actor sin representante
         Actor actor1 = new Actor("Luis Méndez", 30, "Masculino", "Mexicano", "321987654",
-                                 "luis@gmail.com", "Verdes", "Negro", "1994-11-30",
-                                 "foto3.jpg", null, 6, "Cine y Teatro");
+                "luis@gmail.com", "Verdes", "Negro", "1994-11-30",
+                "foto3.jpg", null, 6, "Cine y Teatro");
 
         // Actor con representante
         Actor actor2 = new Actor("Paula Sánchez", 28, "Femenino", "Colombiana", "147852369",
-                                 "paula@gmail.com", "Marrones", "Castaño", "1996-05-18",
-                                 "foto4.jpg", representante2, 8, "Doblaje y Televisión");
+                "paula@gmail.com", "Marrones", "Castaño", "1996-05-18",
+                "foto4.jpg", representante2, 8, "Doblaje y Televisión");
 
         // Candidato Niño con tutor
         CandidatoNiño niño1 = new CandidatoNiño("Martín Pérez", 10, "Masculino", "Chileno", "963258741",
-                                               "martin@gmail.com", "Negros", "Negro", "2014-09-12",
-                                               "foto5.jpg", representante1, "Alejandra Pérez");
+                "martin@gmail.com", "Negros", "Negro", "2014-09-12",
+                "foto5.jpg", representante1, "Alejandra Pérez");
 
         // Agregar trabajos al portafolio
         modelo1.agregarTrabajo("https://portfolio-ana.com/desfile1");
@@ -75,6 +76,17 @@ public class Main {
         casting2.agregarCandidato(actor1);
         casting2.agregarCandidato(actor2);
         casting2.agregarCandidato(niño1);
+
+        // CREACIÓN Y ASIGNACIÓN DE PRUEBAS INDIVIDUALES
+        PruebaIndividual prueba1 = new PruebaIndividual(modelo1, "Desfile en pasarela", 9);
+        PruebaIndividual prueba2 = new PruebaIndividual(actor1, "Actuación en escena", 8);
+        PruebaIndividual prueba3 = new PruebaIndividual(niño1, "Prueba de publicidad infantil", 10);
+
+        // Mostrar resultados de las pruebas
+        System.out.println("\n=== RESULTADOS DE PRUEBAS INDIVIDUALES ===");
+        prueba1.mostrarResultado();
+        prueba2.mostrarResultado();
+        prueba3.mostrarResultado();
 
         //MOSTRAR INFORMACIÓN DE LOS CASTINGS Y SUS CANDIDATOS
         mostrarDetallesCasting(casting1);
@@ -100,5 +112,3 @@ public class Main {
         }
     }
 }
-
-

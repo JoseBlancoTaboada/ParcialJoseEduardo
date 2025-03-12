@@ -42,6 +42,11 @@ public abstract class Candidato {
         this.fotografia = fotografia;
         this.representante = representante;
         this.portafolio = new ArrayList<>();
+       
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     // Método para agregar un enlace al portafolio
@@ -49,7 +54,6 @@ public abstract class Candidato {
         portafolio.add(enlace);
     }
 
-    // Método abstracto que será implementado en las subclases
     public abstract void mostrarDetalles();
 }
 
